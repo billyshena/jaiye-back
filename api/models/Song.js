@@ -18,6 +18,14 @@ module.exports = {
       type: 'string'
     },
 
+    url: {
+      type: 'string'
+    },
+
+    description: {
+      type: 'text'
+    },
+
     tags: {
       collection: 'tag',
       via: 'songs'

@@ -26,5 +26,10 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true
+  '*': false,
+
+  'AuthController': {
+    facebook: true
+  }
+
 };
