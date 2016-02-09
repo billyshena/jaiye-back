@@ -23,7 +23,6 @@ module.exports = {
     // Calling Graph API
     FBGraphService.fetch( req.param('accessToken'), 'email,name,first_name,last_name,birthday,gender,timezone,locale,location', function(profile) {
 
-      sails.log('Facebook User', profile);
       User
         .findOrCreate(
         {

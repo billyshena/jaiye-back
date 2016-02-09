@@ -49,6 +49,10 @@ module.exports.policies = {
 
   'CategoryController': {
       create: ['isAuthenticated', 'isAdmin']
+  },
+
+  'UserController': {
+      create: true
   }
 
 };
