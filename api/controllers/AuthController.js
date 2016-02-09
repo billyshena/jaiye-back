@@ -32,7 +32,6 @@ module.exports = {
           facebookID: profile.id,
           firstName: profile.first_name,
           lastName: profile.last_name,
-          nickName: profile.first_name + profile.last_name,
           gender: profile.gender,
           locale: profile.locale,
           location: profile.location && profile.location.name ? profile.location.name : null,

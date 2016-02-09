@@ -33,6 +33,10 @@ module.exports = {
       unique: true
     },
 
+    password: {
+      type: 'string'
+    },
+
     description: {
       type: 'text'
     },
@@ -74,6 +78,11 @@ module.exports = {
 
     cover: {
       type: 'string'
+    },
+
+    /* Normal user or Admin */
+    type: {
+      type: 'integer'
     }
 
   }
