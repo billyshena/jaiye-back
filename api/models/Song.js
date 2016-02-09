@@ -29,7 +29,13 @@ module.exports = {
     tags: {
       collection: 'tag',
       via: 'songs'
+    },
+
+    validated: {
+      type: 'boolean',
+      defaultsTo: false
     }
+
 
   }
 };

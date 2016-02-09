@@ -15,7 +15,6 @@ module.exports = {
       required: true
     },
 
-
     songs: {
       collection: 'song',
       via: 'tags'

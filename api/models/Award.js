@@ -1,5 +1,5 @@
 /**
-* Like.js
+* Award.js
 *
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
 * @docs        :: http://sailsjs.org/#!documentation/models
@@ -9,17 +9,17 @@ module.exports = {
 
   attributes: {
 
-    artist: {
-      model: 'user'
-    },
-
-    from: {
-      model: 'user',
+    song: {
+      model: 'song',
       required: true
     },
 
-    song: {
-      model: 'song'
+    category: {
+      model: 'category'
+    },
+
+    owner: {
+      model: 'user'
     }
 
   }
