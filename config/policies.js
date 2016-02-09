@@ -45,6 +45,10 @@ module.exports.policies = {
   'LikeController': {
     create: ['isAuthenticated'],
     find: true
+  },
+
+  'CategoryController': {
+      create: ['isAuthenticated', 'isAdmin']
   }
 
 };
