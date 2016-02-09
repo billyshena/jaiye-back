@@ -16,3 +16,20 @@ exports.createUser = function(params, next) {
         });
 
 };
+
+
+// User login system
+exports.userLogin = function(params, next) {
+
+    User
+        .findOne(params)
+        .exec(function(err, user) {
+          if(err) {
+            console.log('err', err);
+          }
+          if(!user) {
+            console.log('No user found for this e-mail in userLogin');
+          }
+          next(err, user);
+        });
+};
