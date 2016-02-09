@@ -11,8 +11,7 @@ module.exports = {
   attributes: {
 
     facebookID: {
-      type: 'string',
-      required: true
+      type: 'string'
     },
 
     firstName: {

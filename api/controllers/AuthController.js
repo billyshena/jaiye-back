@@ -138,7 +138,7 @@ module.exports = {
               // Generate API access token to be stored in the browser (session/local storage)
               var jsonToken = JSON.stringify({
                 id: user.id,
-                hash: TokenService.issueToken(admin)
+                hash: TokenService.issueToken(user)
               });
 
               return res.json({
