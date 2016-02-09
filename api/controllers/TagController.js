@@ -28,8 +28,16 @@ module.exports = {
     // Return all tags available
     find: function(req, res) {
 
+        if(!req.param('term')) {
+          return res.badRequest();
+        }
+
+        var where = {
+          name: req.param('term')
+        };
+
         TagService
-            .getTags(req.allParams(), function(err, tags) {
+            .getTags(where, function(err, tags) {
               if(err) {
                 return res.serverError(err);
               }
