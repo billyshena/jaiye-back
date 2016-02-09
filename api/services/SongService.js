@@ -13,7 +13,7 @@ exports.createSong = function(params, next) {
     .create(params)
     .exec(function(err, song) {
       if(err) {
-        next(err, null);
+        console.log('err', err);
       }
       next(err, song);
     });

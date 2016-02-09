@@ -40,6 +40,11 @@ module.exports.policies = {
 
   'AdminController': {
     create: ['isAuthenticated', 'isAdmin']
+  },
+
+  'LikeController': {
+    create: ['isAuthenticated'],
+    find: true
   }
 
 };

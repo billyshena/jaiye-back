@@ -10,6 +10,10 @@ module.exports = {
     // Create a new Song
     create: function(req, res) {
 
+      if(!req.param('title') || !req.param('url')) {
+        return res.badRequest();
+      }
+
       var params = req.allParams();
       params.owner = req.token.id;
 
@@ -17,7 +21,7 @@ module.exports = {
         if(err) {
           return res.serverError(err);
         }
-        return res.json(200);
+        return res.json(song);
       });
 
     },

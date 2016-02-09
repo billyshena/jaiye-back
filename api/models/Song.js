@@ -11,15 +11,18 @@ module.exports = {
 
 
     owner: {
-      model: 'user'
+      model: 'user',
+      required: true
     },
 
     title: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
 
     url: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
 
     description: {
