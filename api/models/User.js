@@ -78,13 +78,7 @@ module.exports = {
 
     cover: {
       type: 'string'
-    },
-
-    /* Normal user or Admin */
-    type: {
-      type: 'integer'
     }
-
   }
 };
 

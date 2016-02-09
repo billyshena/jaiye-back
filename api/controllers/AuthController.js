@@ -66,6 +66,51 @@ module.exports = {
     });
 
 
+  },
+
+
+  // Admin panel auth function
+  admin: function(req, res) {
+
+    if(!req.param('email') || !req.param('password')) {
+      return res.badRequest();
+    }
+
+    AdminService.adminAuth(req.param('email'), function(err, admin) {
+      if(err) {
+        return res.serverError(err);
+      }
+
+      // Compare password from the form params to the encrypted password of the user found.
+      bcrypt.compare(req.param('password'), admin.password, function (err, valid) {
+
+        if (err) {
+          return serverError(err);
+        }
+
+        // If the password from the form doesn't match the password from the database...
+        if (!valid) {
+          return res.badRequest();
+        }
+
+        // Generate API access token to be stored in the browser (session/local storage)
+        var jsonToken = JSON.stringify({
+          id: admin.id,
+          type: admin.type,
+          hash: TokenService.issueToken(admin)
+        });
+
+        return res.json({
+          token: jsonToken
+        });
+
+      });
+    })
+
+
+
+
+
   }
 
 

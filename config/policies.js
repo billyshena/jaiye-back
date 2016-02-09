@@ -30,6 +30,15 @@ module.exports.policies = {
 
   'AuthController': {
     facebook: true
+  },
+
+  'SongController': {
+    create: true,
+    find: true
+  },
+
+  'AdminController': {
+    create: true
   }
 
 };
