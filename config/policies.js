@@ -29,16 +29,17 @@ module.exports.policies = {
   '*': false,
 
   'AuthController': {
-    facebook: true
+    facebook: true,
+    admin: true
   },
 
   'SongController': {
-    create: true,
+    create: ['isAuthenticated'],
     find: true
   },
 
   'AdminController': {
-    create: true
+    create: ['isAuthenticated', 'isAdmin']
   }
 
 };

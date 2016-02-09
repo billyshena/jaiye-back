@@ -11,6 +11,7 @@ module.exports = {
     create: function(req, res) {
 
       var params = req.allParams();
+      params.owner = req.token.id;
 
       SongService.createSong(params, function(err, song) {
         if(err) {

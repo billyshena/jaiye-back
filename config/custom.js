@@ -10,6 +10,7 @@ module.exports.custom = {
   },
 
   // Admin type UUID to check if its an administrator of the app
-  adminTypeUUID: '5c4b2f0a-cf4a-11e5-ab30-625662870761'
+  adminTypeUUID: '5c4b2f0a-cf4a-11e5-ab30-625662870761',
+  tokenExpiration: 86400 // expressed in seconds and current value equals to 1 week
 
 };

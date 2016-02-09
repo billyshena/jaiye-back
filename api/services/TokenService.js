@@ -10,7 +10,7 @@ module.exports.issueToken = function(payload) {
     return jwt.sign(
         payload, // This is the payload we want to put inside the token
         "yw5nywHe20LWflWagvkEeK1jeO33iFuN2wPRNQ7S7ddkTmJt0ItJcssQOBYJBbwdz233jaiye", // Secret string which will be used to sign the token
-        { expiresInMinutes: 10080 } // Expire time = 24 hours (60 * 24)      10080 = 1 week
+        { expiresIn: sails.config.custom.tokenExpiration } // Expire time = 24 hours (60 * 24)      10080 = 1 week
     );
 };
 

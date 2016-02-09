@@ -8,6 +8,7 @@
  */
 
 var https = require('https');
+var bcrypt = require('bcrypt');
 
 module.exports = {
 
@@ -105,11 +106,7 @@ module.exports = {
         });
 
       });
-    })
-
-
-
-
+    });
 
   }
 
