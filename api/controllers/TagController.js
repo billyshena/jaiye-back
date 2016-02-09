@@ -28,16 +28,13 @@ module.exports = {
     // Return all tags available
     find: function(req, res) {
 
-        if(!req.param('term')) {
-          return res.badRequest();
-        }
+        var where = {};
 
-        // Build automcompletion query parameters
-        var where = {
-          name: {
+        if(req.param('term')) {
+          where.name = {
             startsWith: req.param('term')
           }
-        };
+        }
 
         TagService
             .getTags(where, function(err, tags) {
