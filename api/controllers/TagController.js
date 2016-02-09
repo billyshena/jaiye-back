@@ -32,8 +32,11 @@ module.exports = {
           return res.badRequest();
         }
 
+        // Build automcompletion query parameters
         var where = {
-          name: req.param('term')
+          name: {
+            startsWith: req.param('term')
+          }
         };
 
         TagService

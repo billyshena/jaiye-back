@@ -22,11 +22,7 @@ exports.getTags = function(where, next) {
 
     Tag
         .find()
-        .where({
-          name: {
-            startsWith: where.name
-          }
-        })
+        .where(where)
         .exec(function(err, tags) {
           if(err) {
             console.log('err', err);
