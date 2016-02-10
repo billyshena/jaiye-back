@@ -22,6 +22,20 @@ module.exports = {
               return res.json(category);
           });
 
+    },
+
+
+    // Fetch all categories available
+    find: function(req, res) {
+
+        var where = req.allParams();
+        CategoryService.findCategories(where, function(err, categories) {
+          if(err) {
+            return res.serverError(err);
+          }
+          return res.json(categories);
+        });
+
     }
 
 };
