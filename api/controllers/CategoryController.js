@@ -36,6 +36,37 @@ module.exports = {
           return res.json(categories);
         });
 
+    },
+
+    update: function(req, res) {
+
+        if(!req.param('id') || !req.param('name')) {
+          return res.badRequest();
+        }
+
+        CategoryService.updateCategory(req.param('id'), { name: req.param('name') }, function(err, category) {
+          if(err) {
+            return res.serverError(err);
+          }
+          return res.json(category);
+        });
+
+    },
+
+
+    destroy: function(req, res) {
+
+        if(!req.param('id')) {
+          return res.badRequest();
+        }
+
+        CategoryService.deleteCategory(req.param('id'), function(err) {
+          if(err) {
+            return res.serverError(err);
+          }
+          return res.json(200);
+        });
+
     }
 
 };

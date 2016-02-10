@@ -9,6 +9,8 @@
 
 var https = require('https');
 var bcrypt = require('bcrypt');
+var passport = require('passport');
+var TwitterStrategy = require('passport-twitter').Strategy;
 
 module.exports = {
 

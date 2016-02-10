@@ -31,7 +31,8 @@ module.exports.policies = {
   'AuthController': {
     facebook: true,
     admin: true,
-    user: true
+    user: true,
+    twitter: true
   },
 
   'SongController': {
@@ -49,7 +50,7 @@ module.exports.policies = {
   },
 
   'CategoryController': {
-      create: ['isAuthenticated', 'isAdmin']
+      '*': ['isAuthenticated', 'isAdmin']
   },
 
   'UserController': {
