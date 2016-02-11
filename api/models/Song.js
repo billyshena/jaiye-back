@@ -34,6 +34,10 @@ module.exports = {
       via: 'songs'
     },
 
+    category: {
+      model: 'category'
+    },
+
     validated: {
       type: 'boolean',
       defaultsTo: false

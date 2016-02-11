@@ -26,6 +26,8 @@ exports.getSongs = function(where, next) {
 
   Song
     .find()
+    .populate('owner')
+    .populate('category')
     .where(where)
     .exec(function(err, songs) {
       if(err) {

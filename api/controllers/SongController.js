@@ -31,6 +31,7 @@ module.exports = {
 
       var where = req.allParams();
 
+
       SongService.getSongs(where, function(err, songs) {
         if(err) {
           return res.serverError(err);
