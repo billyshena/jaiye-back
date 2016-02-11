@@ -42,8 +42,10 @@ exports.updateCategory = function(id, params, next) {
           if(err) {
             console.log('err', err);
           }
-          var result = category[0] || {};
-          next(err, result);
+          if(!category || !category[0]) {
+            console.log('Category not found in updateCategory');
+          }
+          next(err, category[0]);
         });
 
 

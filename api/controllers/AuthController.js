@@ -119,10 +119,17 @@ module.exports = {
         return res.badRequest();
       }
 
+
+    console.log('email', req.param('email'));
       UserService
           .userLogin( { email: req.param('email') }, function(err, user) {
+            console.log('user', user);
             if(err) {
               return res.serverError(err);
+            }
+
+            if(!user) {
+              return res.badRequest();
             }
 
             // Compare password from the form params to the encrypted password of the user found.

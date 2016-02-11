@@ -40,3 +40,19 @@ exports.getSongs = function(where, next) {
     });
 
 };
+
+exports.updateSong = function(id, params, next) {
+
+  Song
+      .update(id, params)
+      .exec(function(err, song) {
+        if(err) {
+          console.log('err', err);
+        }
+        if(!song || !song[0]) {
+          console.log('No song found');
+        }
+        next(err, song[0]);
+      });
+
+};

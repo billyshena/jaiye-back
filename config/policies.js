@@ -37,7 +37,8 @@ module.exports.policies = {
 
   'SongController': {
     create: ['isAuthenticated'],
-    find: true
+    find: true,
+    update: ['isAuthenticated']
   },
 
   'AdminController': {

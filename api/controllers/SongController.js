@@ -49,8 +49,11 @@ module.exports = {
         return res.badRequest();
       }
 
+      var params = req.allParams();
+      delete params.id;
+
       Song
-        .findOneById( parseInt( req.param('id'), 1 ) )
+        .findOneById( parseInt( req.param('id'), 10 ) )
         .exec(function(err, song) {
           if(err) {
             return res.serverError(err);
@@ -61,7 +64,17 @@ module.exports = {
           if(song.owner !== req.token.id || req.token.type !== sails.config.custom.adminTypeUUID) {
             return res.forbidden();
           }
-          return res.json(200);
+
+          SongService.updateSong(song.id, params, function(err, result) {
+            if(err) {
+              return res.serverError(err);
+            }
+            if(!song) {
+              return res.serverError('No song found in SongController');
+            }
+            return res.json(result);
+          });
+
         });
 
 
