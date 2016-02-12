@@ -56,3 +56,32 @@ exports.updateSong = function(id, params, next) {
       });
 
 };
+
+
+exports.findById = function(id, next) {
+
+  Song
+      .findOneById( parseInt( id, 10 ) )
+      .exec(function(err, song) {
+        if(err) {
+          console.log('err', err);
+        }
+        if(!song) {
+          console.log('Song not found in findById');
+        }
+        next(err, song);
+      });
+
+};
+
+exports.deleteSong = function(id, next) {
+
+  Song
+      .destroy( parseInt( id, 10 ) )
+      .exec(function(err) {
+        if(err) {
+          console.log('err', err);
+        }
+        next(err, null);
+      });
+};

@@ -52,16 +52,15 @@ module.exports = {
       var params = req.allParams();
       delete params.id;
 
-      Song
-        .findOneById( parseInt( req.param('id'), 10 ) )
-        .exec(function(err, song) {
+      SongService
+        .findById( req.param('id'), function(err, song) {
           if(err) {
             return res.serverError(err);
           }
           if(!song){
             return res.notFound();
           }
-          if(song.owner !== req.token.id || req.token.type !== sails.config.custom.adminTypeUUID) {
+          if((song.owner && song.owner !== req.token.id) || req.token.type !== sails.config.custom.adminTypeUUID) {
             return res.forbidden();
           }
 
@@ -76,6 +75,42 @@ module.exports = {
           });
 
         });
+
+
+    },
+
+
+    destroy: function(req, res) {
+
+      if(!req.param('id')) {
+        return res.badRequest();
+      }
+
+      SongService
+          .findById( req.param('id'), function(err, song) {
+            if(err) {
+              return res.serverError(err);
+            }
+            if(!song) {
+              return res.notFound();
+            }
+
+            sails.log('here', song);
+            console.log('token', req.token.type, 'config', sails.config.custom.adminTypeUUID);
+            if((song.owner && song.owner !== req.token.id) || req.token.type !== sails.config.custom.adminTypeUUID) {
+              sails.log('forbidden');
+              return res.forbidden();
+            }
+
+            SongService
+                .deleteSong(song.id, function(err) {
+                  if(err) {
+                    return res.serverError(err);
+                  }
+                  return res.json(song);
+                });
+          })
+
 
 
     }
