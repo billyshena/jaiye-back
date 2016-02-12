@@ -52,7 +52,8 @@ module.exports.policies = {
   },
 
   'CategoryController': {
-      '*': ['isAuthenticated', 'isAdmin']
+      '*': ['isAuthenticated', 'isAdmin'],
+      find: true
   },
 
   'UserController': {

@@ -9,9 +9,11 @@ module.exports = {
 
   attributes: {
 
+    // Use name as an IDENTIFIER
     name: {
       type: 'string',
-      required: true
+      required: true,
+      unique: true
     }
 
   }

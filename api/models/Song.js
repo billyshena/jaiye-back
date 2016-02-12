@@ -55,12 +55,14 @@ module.exports = {
 
     // Retrieve Youtube video ID from url
     var url = values.url.split('v=')[1];
-    var pos = url.indexOf('&');
-    if(pos !== -1) {
-      url = url.substring(0, pos);
+    if(url) {
+      var pos = url.indexOf('&');
+      if (pos !== -1) {
+        url = url.substring(0, pos);
+      }
+      values.url = url;
     }
 
-    values.url = url;
     return next();
 
   },
@@ -72,14 +74,17 @@ module.exports = {
       return next();
     }
 
+
     // Retrieve Youtube video ID from url
     var url = values.url.split('v=')[1];
-    var pos = url.indexOf('&');
-    if(pos !== -1) {
-      url = url.substring(0, pos);
+    if(url) {
+      var pos = url.indexOf('&');
+      if (pos !== -1) {
+        url = url.substring(0, pos);
+      }
+      values.url = url;
     }
 
-    values.url = url;
     return next();
 
   }

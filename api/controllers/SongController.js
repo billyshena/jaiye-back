@@ -26,20 +26,6 @@ module.exports = {
 
     },
 
-    // Fetch all songs
-    find: function(req, res) {
-
-      var where = req.allParams();
-
-
-      SongService.getSongs(where, function(err, songs) {
-        if(err) {
-          return res.serverError(err);
-        }
-        return res.json(songs);
-      });
-
-    },
 
 
     // Update a Song and its information
