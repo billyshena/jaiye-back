@@ -60,7 +60,8 @@ module.exports = {
           if(!song){
             return res.notFound();
           }
-          if((song.owner && song.owner !== req.token.id) || req.token.type !== sails.config.custom.adminTypeUUID) {
+
+          if(song.owner !== req.token.id && req.token.type !== sails.config.custom.adminTypeUUID) {
             return res.forbidden();
           }
 
