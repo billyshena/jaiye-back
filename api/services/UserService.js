@@ -33,3 +33,40 @@ exports.userLogin = function(params, next) {
           next(err, user);
         });
 };
+
+
+exports.findUsers = function(where, next) {
+
+  User
+      .find()
+      .where(where)
+      .exec(function(err, users) {
+        if(err) {
+          console.log('err', err);
+        }
+        if(!users) {
+          console.log('Users not found in findUsers');
+        }
+        next(err, users);
+
+      });
+
+};
+
+
+exports.updateUser = function(params, next) {
+
+  User
+      .update(params.id, params)
+      .exec(function(err, user) {
+        if(err) {
+          console.log('err', err);
+        }
+        if(!user || !user[0]) {
+          console.log('No user object found in updateUser');
+        }
+        next(err, user[0]);
+
+      });
+
+};

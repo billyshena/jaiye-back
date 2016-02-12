@@ -56,7 +56,9 @@ module.exports.policies = {
   },
 
   'UserController': {
-      create: true
+      create: true,
+      find: ['isAuthenticated', 'isAdmin'],
+      update: ['isAuthenticated']
   },
 
   'TagController': {
