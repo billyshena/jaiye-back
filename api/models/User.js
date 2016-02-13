@@ -14,6 +14,10 @@ module.exports = {
       type: 'string'
     },
 
+    twitterID: {
+      type: 'string'
+    },
+
     firstName: {
       type: 'string',
       maxLength: 60,
