@@ -64,7 +64,9 @@ module.exports.policies = {
 
   'TagController': {
       create: ['isAuthenticated', 'isAdmin'],
-      find: true
+      find: true,
+      update: ['isAuthenticated', 'isAdmin'],
+      destroy: ['isAuthenticated', 'isAdmin']
   }
 
 };

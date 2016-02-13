@@ -34,3 +34,34 @@ exports.getTags = function(where, next) {
         });
 
 };
+
+exports.updateTag = function(params, next) {
+
+  Tag
+      .update(params.id, params)
+      .exec(function(err, tag) {
+        if(err) {
+          console.log('err', err);
+        }
+        if(!tag || !tag[0]) {
+          console.log('No tag found in updateTag');
+        }
+        next(err, tag);
+      });
+
+};
+
+
+exports.deleteTag = function(id, next) {
+
+  Tag
+      .destroy(id)
+      .exec(function(err) {
+        if(err) {
+          console.log('err', err);
+        }
+        next(err, null);
+
+      });
+
+};

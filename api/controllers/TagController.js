@@ -43,6 +43,36 @@ module.exports = {
               }
               return res.json(tags);
             });
+    },
+
+    update: function(req, res) {
+
+        var where = req.allParams();
+        TagService.updateTag(where, function(err, tag) {
+          if(err) {
+            return res.serverError(err);
+          }
+          return res.json(tag);
+        });
+
+    },
+
+
+    destroy: function(req, res) {
+
+        if(!req.param('id')) {
+          return res.badRequest();
+        }
+
+        TagService
+            .deleteTag
+            ( parseInt( req.param('id'), 10 ), function(err) {
+              if(err) {
+                return res.serverError(err);
+              }
+              return res.json(200);
+            });
+
     }
 	
 };
