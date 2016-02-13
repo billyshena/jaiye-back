@@ -84,11 +84,14 @@ module.exports = {
   // Before User.js is created, hash the password
   beforeCreate: function (values, next) {
 
+    if(!values.password) {
+      return next();
+    }
     // Using node bcrypt module to hash the password
     bcrypt.hash(values.password, 10, function (err, hash) {
       if (err) return next(err);
       values.password = hash;
-      next();
+      return next();
     });
 
   }
